@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>All about Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Click to Scrape New Data!</a></p>
+    </div>
+
+    <hr>
+
+    <!-- Row 1 -->
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <h2 class="text-primary">Latest Mars News</h2>
+        <h5>{{mars.news_title}}</h5>
+        <p class = "text-left float-left">{{mars.news_p}}</p>
+      </div>
+    </div>
+    <hr>
+
+  
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-8">
+          <h2 class="text-primary">Featured Mars Image</h2>
+          <img class="img-fluid float-left" id="FeaturedImage" src={{mars.featured_image_url}}>
+      </div>
+
+      <div class="col-sm-12 col-md-4 col-lg-4">
+        <div class = "my-2" style="border-style:solid; border-color:grey; border-width:1px;">
+          <h3 id="Weather" class = "text-left mx-2 my-2 text-primary">Current Weather on Mars</h3>
+          <p class = "mx-2">{{mars.mars_weather}}</p>
+        </div>
+        
+        </br>
+        <h3 class="text-primary">Mars Facts</h3>
+        {{mars.mars_facts|safe}}
+      </div>
+    </div>
+    <hr>
+
+    <!-- Row 3 -->
+      <div class="col-12">
+      </br>        
+          <h2 class="text-center text-primary">Mars Hemisphere</h2>
+          <hr>
+  
+          <div class="row">
+            {% for hemisphere_image_url in mars.hemisphere_image_urls %}
+              <div class="col-sm-12 col-md-6 text-center">
+                <img class="img-fluid" src="{{hemisphere_image_url.img_url}}" alt="{{hemisphere_image_url.title}}">
+                <h5 class = 'my-2'>{{hemisphere_image_url.title}}</h5>
+              </div>
+            {% endfor %}
+
+            <div class="clearfix" style="clear:both">
+              <!-- clearfix all breakpoints -->
+            </div>
+  
+          </div>
+      </div>
+      </br>
+
+    <hr>
+    <!-- Row 4 -->
+    <p id="Nadia" class ="text-left text-primary">nfiskandar - Jan 2020</p>
+  </div>
+</body>
+
+</html>
+
